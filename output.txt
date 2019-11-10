@@ -1,0 +1,9 @@
+Product is:
+binary: 00010010110000
+int: 1200
+Quotient is:
+binary: 00000000
+int: 0
+Remainder is:
+binary: 00011110
+int: 30

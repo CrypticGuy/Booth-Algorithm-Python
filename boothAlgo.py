@@ -79,11 +79,11 @@ def addToBinArrays(a, b):
 def divTwoBinary(a, b):
     # Answer is given by a / b
     L = max(binLength(a), binLength(b)) + 2 # This will reflect in the final value that we will need
-    print(L + 2)
+    #print(L + 2)
     A = list('0' * L)
     Q = list(complementConverter2s(a, L))
     M = list(complementConverter2s(b, L))
-    print(A, Q, M)
+    #print(A, Q, M)
     #print(binaryTo2sComp(''.join(M)))
     for i in range(L):
         leftA = A[0]
@@ -104,37 +104,47 @@ def divTwoBinary(a, b):
         #print("")
     if (A[0] == '1'):
         A = addToBinArrays(A, M)
-    print(A, Q, M)
-    print(''.join(A), ''.join(Q))
-    print(int(''.join(A), 2), int(''.join(Q), 2))
+    #print(A, Q, M)
+    print("Quotient: " + ''.join(Q), "Remainder: " + ''.join(A))
+    print("Quotient: " + str(int(''.join(Q), 2)), "Remainder: " + str(int(''.join(A), 2)))
+    with open("output.txt", 'a',encoding = 'utf-8') as f:
+        f.write("\nQuotient is:\n" + "binary: " + str(''.join(Q)) + "\nint: " + str(int(''.join(Q), 2)))
+        f.write("\nRemainder is:\n" + "binary: " + str(''.join(A)) + "\nint: " + str(int(''.join(A), 2)))
 
 def mulTwoBinary(a, b):
     L = max(binLength(a), binLength(b)) + 1
-    print(L)
+    #print(L)
     A = list('0'*(L))
     Q = list(complementConverter2s(a, L))
     M = list(complementConverter2s(b, L))
     Mc = list(binaryTo2sComp(''.join(M)))
-    print(A, Q,M, Mc)
+    #print(A, Q,M, Mc)
     Q0 = '0'
     for i in range(L):
-        print(''.join(A), ''.join(Q), Q0)
+        #print(''.join(A), ''.join(Q), Q0)
 
         #print(Q[-1] + Q0)
         if (Q[-1] + Q0 == '01'):
             A = addToBinArrays(A, M)
-            print(''.join(A), ''.join(Q), Q0)
+            #print(''.join(A), ''.join(Q), Q0)
         elif (Q[-1] + Q0 == '10'):
             A = addToBinArrays(A, Mc)
-            print(''.join(A), ''.join(Q), Q0)
+            #print(''.join(A), ''.join(Q), Q0)
         tempA = A[0]
         Q0 = Q[-1]
         Q = Q[:-1]
         Q.insert(0, A[-1])
         A = A[:-1]
         A.insert(0, A[0])
-        print(''.join(A), ''.join(Q), Q0)
-        print()
         #print(''.join(A), ''.join(Q), Q0)
+        #print()
+        #print(''.join(A), ''.join(Q), Q0)
+    ans = ''.join(A + Q)
+    intAns = int(ans, 2)
+    with open("output.txt", 'w',encoding = 'utf-8') as f:
+        f.write("Product is:\n" + "binary: " + str(ans) + "\nint: " + str(intAns))
 
-print(mulTwoBinary(-6, -6))
+a = int(input("Enter number 1: "))
+b = int(input("Enter number 2: "))
+mulTwoBinary(a, b)
+divTwoBinary(a, b)
