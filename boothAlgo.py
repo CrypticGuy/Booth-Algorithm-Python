@@ -81,8 +81,8 @@ def divTwoBinary(a, b):
     L = max(binLength(a), binLength(b)) + 2 # This will reflect in the final value that we will need
     #print(L + 2)
     A = list('0' * L)
-    Q = list(complementConverter2s(a, L))
-    M = list(complementConverter2s(b, L))
+    Q = list(complementConverter2s(abs(a), L))
+    M = list(complementConverter2s(abs(b), L))
     #print(A, Q, M)
     #print(binaryTo2sComp(''.join(M)))
     for i in range(L):
@@ -104,12 +104,24 @@ def divTwoBinary(a, b):
         #print("")
     if (A[0] == '1'):
         A = addToBinArrays(A, M)
+    strQ = ''.join(Q)
+    strA = ''.join(A)
+    intA = int(''.join(A), 2)
+    intQ = int(''.join(Q), 2)
+    if (a < 0 and b < 0):
+        A = binaryTo2sComp(strA)
+        intA = -1*intA
+    elif(a < 0 or b < 0):
+        Q = binaryTo2sComp(strQ)
+        A = binaryTo2sComp(strA)
+        intQ = -1*intQ
+        intA = -1*intA
     #print(A, Q, M)
     print("Quotient: " + ''.join(Q), "Remainder: " + ''.join(A))
-    print("Quotient: " + str(int(''.join(Q), 2)), "Remainder: " + str(int(''.join(A), 2)))
+    print("Quotient: " + str(intQ), "Remainder: " + str(intA))
     with open("output.txt", 'a',encoding = 'utf-8') as f:
-        f.write("\nQuotient is:\n" + "binary: " + str(''.join(Q)) + "\nint: " + str(int(''.join(Q), 2)))
-        f.write("\nRemainder is:\n" + "binary: " + str(''.join(A)) + "\nint: " + str(int(''.join(A), 2)))
+        f.write("\nQuotient is:\n" + "binary: " + str(''.join(Q)) + "\nint: " + str(intQ))
+        f.write("\nRemainder is:\n" + "binary: " + str(''.join(A)) + "\nint: " + str(intA))
 
 def mulTwoBinary(a, b):
     L = max(binLength(a), binLength(b)) + 1

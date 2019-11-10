@@ -1,9 +1,9 @@
 Product is:
-binary: 00010010110000
-int: 1200
+binary: 1111100010
+int: 994
 Quotient is:
-binary: 00000000
-int: 0
+binary: 111101
+int: -3
 Remainder is:
-binary: 00011110
-int: 30
+binary: 111111
+int: -1
