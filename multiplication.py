@@ -113,8 +113,11 @@ def main():
             ansu=arthmeticRightShift(ansStr)
         elif(q0=='0' and q[-1]=='1'):
             print("Enterin 10")
-            m2=complementConverter2s(m1, n)
-            m2=binaryTo2sComp(m2)
+            if(m1<0):
+                m2=complementConverter2s(m1, n)
+                m2=binaryTo2sComp(m2)
+            else:
+                m2=complementConverter2s(m1, n)
             print("adding "+m2)
             a=add_binary_nums(a, m2)
             print("adding ans is "+a)
@@ -122,7 +125,11 @@ def main():
             ansu=arthmeticRightShift(ansStr)
         else:
             print("Enterin 01")
-            m2=complementConverter2s(m1, n)
+            if(m1>0):
+                m2=complementConverter2s(m1, n)
+                m2=binaryTo2sComp(m2)
+            else:
+                m2=complementConverter2s(m1, n)
             print("adding "+m2)
             a=add_binary_nums(a, m2)
             ansStr=a+q+q0
@@ -146,7 +153,8 @@ def main():
 
 if __name__=="__main__":
     main()
-    # x=-7
+    # x=7
     # x=complementConverter2s(x, 4)
+    # print(binaryTo2sComp(x))
     # x=binaryTo2sComp(x)
     # print(x)
