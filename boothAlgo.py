@@ -116,6 +116,10 @@ def divTwoBinary(a, b):
         A = binaryTo2sComp(strA)
         intQ = -1*intQ
         intA = -1*intA
+    if (b == 0):
+        with open("output.txt", 'a',encoding = 'utf-8') as f:
+            f.write("\nDivison by Zero Error!")
+        return 
     #print(A, Q, M)
     print("Quotient: " + ''.join(Q), "Remainder: " + ''.join(A))
     print("Quotient: " + str(intQ), "Remainder: " + str(intA))

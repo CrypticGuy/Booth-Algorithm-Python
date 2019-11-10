@@ -1,9 +1,3 @@
 Product is:
-binary: 1111100010
-int: 994
-Quotient is:
-binary: 111101
-int: -3
-Remainder is:
-binary: 111111
-int: -1
+binary: 0000000000
+int: 0Divison by Zero Error!
