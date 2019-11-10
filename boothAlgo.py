@@ -127,14 +127,14 @@ def mulTwoBinary(a, b):
         elif (Q[-1] + Q0 == '10'):
             A = addToBinArrays(A, Mc)
             print(''.join(A), ''.join(Q), Q0)
-        tempQ = Q0
+        tempA = A[0]
         Q0 = Q[-1]
         Q = Q[:-1]
         Q.insert(0, A[-1])
         A = A[:-1]
-        A.insert(0, Q0)
+        A.insert(0, A[0])
         print(''.join(A), ''.join(Q), Q0)
         print()
         #print(''.join(A), ''.join(Q), Q0)
 
-print(mulTwoBinary(6, 6))
+print(mulTwoBinary(-6, -6))
