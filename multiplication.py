@@ -105,37 +105,30 @@ def main():
         print(a+" "+q+" "+q0)
         if(q0=='0' and q[-1]=='0'):
             ansStr=a+q+q0
-            print("Enterin 00")
+            print("Entering 00")
             ansu=arthmeticRightShift(ansStr)
         elif(q0=='1' and q[-1]=='1'):
             ansStr=a+q+q0
-            print("Enterin 11")
+            print("Entering 11")
             ansu=arthmeticRightShift(ansStr)
         elif(q0=='0' and q[-1]=='1'):
-            print("Enterin 10")
-            if(m1<0):
-                m2=complementConverter2s(m1, n)
-                m2=binaryTo2sComp(m2)
-            else:
-                m2=complementConverter2s(m1, n)
+            print("Entering 10")
+            m2=complementConverter2s(m1, n)
+            m2=binaryTo2sComp(m2)
             print("adding "+m2)
             a=add_binary_nums(a, m2)
             print("adding ans is "+a)
             ansStr=a+q+q0
             ansu=arthmeticRightShift(ansStr)
         else:
-            print("Enterin 01")
-            if(m1>0):
-                m2=complementConverter2s(m1, n)
-                m2=binaryTo2sComp(m2)
-            else:
-                m2=complementConverter2s(m1, n)
+            print("Entering 01")
+            m2=complementConverter2s(m1, n)
             print("adding "+m2)
             a=add_binary_nums(a, m2)
             ansStr=a+q+q0
             print("adding ans is "+a)
             ansu=arthmeticRightShift(ansStr)
-        # print("ansu "+ansu)
+        print("ansu "+ansu)
         l-=1
         q0=ansu[-1]
         q=ansu[n:n+n]
