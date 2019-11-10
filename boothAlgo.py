@@ -5,9 +5,11 @@ def binToInt(num):
     return int(str(num), 2)
 
 def binLength(num):
+    temp = num
+    num = abs(num)
     count = 0
     while(num > 0):
-        num /= 2
+        num //= 2
         count += 1
     return count    
 
@@ -74,14 +76,14 @@ def addToBinArrays(a, b):
             c = '0'
     return b[::-1]
 
-def addTwoBinary(a, b):
+def divTwoBinary(a, b):
     # Answer is given by a / b
     L = max(binLength(a), binLength(b)) + 2 # This will reflect in the final value that we will need
     print(L + 2)
     A = list('0' * L)
     Q = list(complementConverter2s(a, L))
     M = list(complementConverter2s(b, L))
-    #print(A, Q, M)
+    print(A, Q, M)
     #print(binaryTo2sComp(''.join(M)))
     for i in range(L):
         leftA = A[0]
@@ -102,6 +104,37 @@ def addTwoBinary(a, b):
         #print("")
     if (A[0] == '1'):
         A = addToBinArrays(A, M)
+    print(A, Q, M)
     print(''.join(A), ''.join(Q))
     print(int(''.join(A), 2), int(''.join(Q), 2))
-print(addTwoBinary(1000, 80))
+
+def mulTwoBinary(a, b):
+    L = max(binLength(a), binLength(b)) + 1
+    print(L)
+    A = list('0'*(L))
+    Q = list(complementConverter2s(a, L))
+    M = list(complementConverter2s(b, L))
+    Mc = list(binaryTo2sComp(''.join(M)))
+    print(A, Q,M, Mc)
+    Q0 = '0'
+    for i in range(L):
+        print(''.join(A), ''.join(Q), Q0)
+
+        #print(Q[-1] + Q0)
+        if (Q[-1] + Q0 == '01'):
+            A = addToBinArrays(A, M)
+            print(''.join(A), ''.join(Q), Q0)
+        elif (Q[-1] + Q0 == '10'):
+            A = addToBinArrays(A, Mc)
+            print(''.join(A), ''.join(Q), Q0)
+        tempQ = Q0
+        Q0 = Q[-1]
+        Q = Q[:-1]
+        Q.insert(0, A[-1])
+        A = A[:-1]
+        A.insert(0, Q0)
+        print(''.join(A), ''.join(Q), Q0)
+        print()
+        #print(''.join(A), ''.join(Q), Q0)
+
+print(mulTwoBinary(6, 6))
